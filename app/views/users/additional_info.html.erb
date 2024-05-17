@@ -1,0 +1,62 @@
+<h1>データを とうろく しよう！</h1>
+
+<%= form_with model: @user, url: save_additional_info_path, local: true do |f| %>
+    <div class="field">
+        <%= f.label :school_code, "がっこうコード ※ せんせいに、きいてね！" %>
+        <%= f.text_field :school_code %>
+    </div>
+
+    <div class="field">
+        <%= f.label :role, "あなたは、どっち？" %>
+        <%= f.select :role, [["せんせい", 1], ["こども", 0]], include_blank: "えらんでください！" %>
+    </div>
+
+    <div class="field" id="teacher-name" style="display: none;">
+        <%= f.label :name, "名前 (先生の場合のみ)" %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+        <%= f.label :grade, "なんねんせい？" %>
+        <%= f.select :grade, (1..6).to_a, include_blank: "えらんでください！" %>
+    </div>
+
+    <div class="field">
+        <%= f.label :class_num, "なんくみ？" %>
+        <%= f.select :class_num, (1..6).to_a, include_blank: "えらんでください！" %>
+    </div>
+
+    <div class="field" id="student-num" style="display: none;">
+        <%= f.label :student_num, "しゅっせき ばんごう" %>
+        <%= f.select :student_num, (1..45).to_a, include_blank: "えらんでください！" %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "とうろく" %>
+    </div>
+<% end %>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const roleSelect = document.getElementById('user_role');
+        const teacherNameField = document.getElementById('teacher-name');
+        const studentNumField = document.getElementById('student-num');
+
+    function toggleFields() {
+        const role = roleSelect.value;
+        if (role === '1') {
+            teacherNameField.style.display = 'block';
+            studentNumField.style.display = 'none';
+        } else if (role === '0') {
+            teacherNameField.style.display = 'none';
+            studentNumField.style.display = 'block';
+        } else {
+            teacherNameField.style.display = 'none';
+            studentNumField.style.display = 'none';
+        }
+    }
+
+        roleSelect.addEventListener('change', toggleFields);
+        toggleFields(); // 初期表示のために呼び出す
+    });
+</script>

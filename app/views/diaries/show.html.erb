@@ -1,0 +1,23 @@
+<h1>にっきをよむ</h1>
+<%= link_to 'さいしょに もどる', authenticated_root_path, class: 'button' %>
+
+<div class="day-navigation">
+  <%= link_to 'まえの ひ', diary_path(@diary.previous_day), class: 'button' if @diary.previous_day %>
+  <span><%= @diary.date.strftime('%Y年 %m月 %d日 (%a)') %></span>
+  <%= link_to 'つぎの ひ', diary_path(@diary.next_day), class: 'button' if @diary.next_day %>
+</div>
+
+<% @questions.each do |question| %>
+  <div>
+    <h3><%= question.text %></h3>
+    <% answer = @diary.answers.find_by(question: question) %>
+    <% if answer %>
+      <div>
+        <%= image_tag url_for(answer.choose_emotion.image), alt: answer.choose_emotion.text, size: "50x50" %>
+        <%= answer.choose_emotion.text %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to 'さいしょに もどる', authenticated_root_path, class: 'button' %>

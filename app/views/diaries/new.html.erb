@@ -1,0 +1,28 @@
+<h1>にっきをかく</h1>
+
+<%= form_with model: @diary, local: true do |f| %>
+    <div>
+        <%= f.hidden_field :date, value: Date.today %>
+        <label>ひづけ</label>
+        <span><%= Date.today %></span>
+    </div>
+
+    <% @questions.each do |question| %>
+        <div>
+            <h3><%= question.text %></h3>
+            <% question.choose_emotions.each do |emotion| %>
+                <div>
+                    <%= radio_button_tag "answers[#{question.id}]", emotion.id %>
+                    <%= label_tag "answers_#{question.id}_#{emotion.id}" do %>
+                        <%= image_tag emotion.image.attached? ? url_for(emotion.image) : "default_image.png", alt: emotion.text, size: "50x50" %>
+                        <%= emotion.text %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+
+    <div>
+        <%= f.submit "ていしゅつする" %>
+    </div>
+<% end %>

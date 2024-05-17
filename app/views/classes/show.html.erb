@@ -1,0 +1,28 @@
+<h1><%= @grade_class.grade %> - <%= @grade_class.class_num %> の日記一覧</h1>
+<%= link_to 'さいしょに もどる', authenticated_root_path %>
+<%= link_to 'クラス選択', classes_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>生徒番号</th>
+      <th>日付</th>
+      <th>回答</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <% student.diaries.each do |diary| %>
+        <tr>
+          <td><%= "#{student.grade_class.grade}#{student.grade_class.class_num}#{student.student_num}" %></td>
+          <td><%= diary.date.strftime("%-m/%-d (%a)") %></td>
+          <td>
+            <% diary.answers.each do |answer| %>
+              <%= image_tag answer.choose_emotion.image, size: "20x20" %> <%= answer.choose_emotion.text %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

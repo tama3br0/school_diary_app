@@ -1,0 +1,14 @@
+<!-- app/views/stamps/show.html.erb -->
+
+<h1><%= @user.name %>のスタンプカード</h1>
+
+<%= link_to 'ホームに戻る', authenticated_root_path, class: 'btn btn-primary' %>
+
+<%= month_calendar do |date| %>
+    <div class="day">
+        <%= date.day %>
+        <% if @diaries.any? { |diary| diary.date == date } %>
+            <%= image_tag('stamp.png', alt: 'スタンプ', size: '30x30') %>
+        <% end %>
+    </div>
+<% end %>

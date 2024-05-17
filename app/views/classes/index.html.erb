@@ -1,0 +1,8 @@
+<h1>クラス選択</h1>
+<%= link_to 'さいしょに もどる', authenticated_root_path %>
+
+<div>
+    <% @classes.each do |grade_class| %>
+        <%= link_to "#{grade_class.grade} - #{grade_class.class_num}", class_diaries_path(grade_class) %>
+    <% end %>
+</div>

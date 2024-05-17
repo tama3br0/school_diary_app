@@ -1,0 +1,17 @@
+<h1>ようこそ！
+    <% if @role == 'teacher' %>
+      <%= @name %>せんせい
+    <% else %>
+      <%= @grade %>ねん<%= @class_num %>くみの<%= @student_num %>ばんさん
+    <% end %>
+  </h1>
+  <p>がっこうコード: <%= @school_code %></p>
+
+  <ul>
+    <li><%= link_to 'にっきをかく', new_diary_path %></li>
+    <li><%= link_to 'にっきをよむ', read_diaries_path %></li>
+    <li><%= link_to 'スタンプカード', stamp_path(current_user.id) %></li>
+    <% if @role == 'teacher' %>
+      <li><%= link_to 'にっきをみる', classes_path %></li>
+    <% end %>
+  </ul>
