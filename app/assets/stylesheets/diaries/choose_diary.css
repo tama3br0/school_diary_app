@@ -1,0 +1,96 @@
+/* diaries/choose_diary.css */
+.diary-selection-page {
+    background-color: #ffffff; /* 背景色を白に設定 */
+    font-family: 'Arial', sans-serif;
+    color: black;
+    text-align: center;
+    padding-top: 80px; /* ヘッダーの高さ分のパディングを追加 */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.diary-selection-page .button {
+    background-color: #ccc; /* ボタンの背景色をグレーに設定 */
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin: 10px;
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.diary-selection-page .week-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.diary-selection-page .week-navigation .button {
+    background-color: #e0e0e0; /* ボタンの背景色をライトグレーに設定 */
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+.diary-selection-page .week-navigation .button:hover {
+    background-color: #cccccc; /* ホバー時の色 */
+}
+
+.diary-selection-page .week-navigation span {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.diary-selection-page ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.diary-selection-page ul li {
+    margin: 10px 0;
+}
+
+.diary-selection-page ul li a {
+    display: inline-block;
+    width: calc(100% - 40px);
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+}
+
+.diary-selection-page ul li.diary-item-1 a {
+    background-color: #ff66ff; /* 月曜日の色 */
+}
+
+.diary-selection-page ul li.diary-item-2 a {
+    background-color: #ff3333; /* 火曜日の色 */
+}
+
+.diary-selection-page ul li.diary-item-3 a {
+    background-color: #3333ff; /* 水曜日の色 */
+}
+
+.diary-selection-page ul li.diary-item-4 a {
+    background-color: #33cc33; /* 木曜日の色 */
+}
+
+.diary-selection-page ul li.diary-item-5 a {
+    background-color: #ccff33; /* 金曜日の色 */
+}
+
+.diary-selection-page ul li a:hover {
+    background-color: #cccccc; /* ホバー時の色 */
+    color: black;
+}

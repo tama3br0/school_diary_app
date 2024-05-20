@@ -29,7 +29,7 @@ class DiariesController < ApplicationController
       end
     end
 
-    def read
+    def choose_diary
       date = params[:date]&.to_date || Date.today
       @diaries = current_user.diaries.order(date: :desc).group_by { |d| d.date.beginning_of_week(:monday) }
     end

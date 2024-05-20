@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>SchoolDiaryApp</title>
+        <title>がっこうにっき</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
@@ -12,9 +12,7 @@
 
     <body>
         <% if user_signed_in? %>
-            <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <% else %>
-            <%= link_to 'ログイン', user_google_oauth2_omniauth_authorize_path %>
+            <%= render 'layouts/header' %>
         <% end %>
         <%= yield %>
     </body>

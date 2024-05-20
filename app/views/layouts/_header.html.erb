@@ -1,0 +1,13 @@
+<header>
+    <div class="left-section">
+        <div class="logo">
+            <img src="<%= asset_path('sd_logo3.png') %>" alt="がっこうにっきロゴ">
+        </div>
+        <div class="school-code">
+            がっこうコード: <%= @school_code %>
+        </div>
+    </div>
+    <div class="right-section">
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout-button" %>
+    </div>
+</header>

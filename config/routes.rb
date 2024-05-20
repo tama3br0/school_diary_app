@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     resources :diaries, only: [:new, :create, :index, :show] do
         collection do
-            get 'read', to: 'diaries#read'
+            get 'choose_diary', to: 'diaries#choose_diary'
         end
     end
 

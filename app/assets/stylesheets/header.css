@@ -1,0 +1,51 @@
+/* header.css */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+header .left-section {
+    display: flex;
+    align-items: center;
+}
+
+header .left-section .logo img {
+    height: 50px;
+    margin-right: 10px; /* ロゴとテキストの間にスペースを追加 */
+}
+
+header .left-section .school-code {
+    font-size: 1.2em;
+    color: white; /* 文字色を白に設定 */
+}
+
+header .right-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+header .logout-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: auto;
+}
+
+header .logout-button:hover {
+    background-color: #0056b3;
+}

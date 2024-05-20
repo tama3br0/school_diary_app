@@ -1,0 +1,96 @@
+/* users/additional_info.css */
+body {
+    background-image: url('/assets/top.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+    padding-top: 80px; /* ヘッダーの高さ分のパディングを追加 */
+}
+
+form.additional-info-form {
+    background: rgba(0, 0, 0, 0.6); /* 背景色を濃くして文字を見やすくする */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    color: white;
+}
+
+.field {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1.2em; /* 質問の文字を大きく */
+}
+
+.field input[type="text"],
+.field select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 10px; /* フィールド間の余白 */
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button-group button {
+    flex: 1 1 calc(33.333% - 10px); /* 3列にする */
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em; /* ボタンの文字を大きく */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px; /* ボタン間の余白 */
+}
+
+.button-group button.active {
+    background-color: #80d4ff; /* 選択時の明るい色 */
+    color: black; /* 選択時の文字色 */
+}
+
+.button-group button:hover {
+    background-color: #0056b3; /* ホバー時の暗い色 */
+}
+
+.actions {
+    text-align: center;
+}
+
+.actions input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.actions input[type="submit"]:hover {
+    background-color: #0056b3;
+}

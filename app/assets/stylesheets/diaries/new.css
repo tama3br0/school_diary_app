@@ -1,0 +1,111 @@
+/* diaries/new.css */
+.diary-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    padding-top: 120px; /* ヘッダーの高さ分のパディングを追加 */
+}
+
+.diary-page h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.diary-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.diary-form .date-field {
+    margin-bottom: 20px;
+}
+
+.diary-form .date-field label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.diary-form .date-field span {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.diary-form .question-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.diary-form .question-container h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.diary-form .emotions-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.diary-form .emotion-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.diary-form .emotion-item input[type="radio"] {
+    display: none;
+}
+
+.diary-form .emotion-item label {
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.diary-form .emotion-item label img {
+    display: block;
+    margin: 0 auto 10px;
+    filter: grayscale(100%); /* 画像を白黒に */
+    transition: filter 0.3s ease-in-out;
+    width: 50px; /* 画像の大きさを50pxに固定 */
+    height: 50px; /* 画像の大きさを50pxに固定 */
+}
+
+.diary-form .emotion-item input[type="radio"]:checked + label img {
+    filter: none; /* 選択された画像はカラーに */
+}
+
+.diary-form .emotion-item label span {
+    display: block;
+    font-size: 1em;
+    color: #333;
+}
+
+.diary-form .submit-container {
+    margin-top: 20px;
+}
+
+.diary-form .submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.diary-form .submit-button:hover {
+    background-color: #0056b3;
+}

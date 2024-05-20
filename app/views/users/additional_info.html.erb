@@ -1,6 +1,6 @@
 <h1>データを とうろく しよう！</h1>
 
-<%= form_with model: @user, url: save_additional_info_path, local: true do |f| %>
+<%= form_with model: @user, url: save_additional_info_path, local: true, html: { class: 'additional-info-form' } do |f| %>
     <div class="field">
         <%= f.label :school_code, "がっこうコード ※ せんせいに、きいてね！" %>
         <%= f.text_field :school_code %>
@@ -8,7 +8,11 @@
 
     <div class="field">
         <%= f.label :role, "あなたは、どっち？" %>
-        <%= f.select :role, [["せんせい", 1], ["こども", 0]], include_blank: "えらんでください！" %>
+        <div class="button-group" id="role-buttons">
+            <button type="button" data-role="1">せんせい</button>
+            <button type="button" data-role="0">こども</button>
+        </div>
+        <%= f.hidden_field :role %>
     </div>
 
     <div class="field" id="teacher-name" style="display: none;">
@@ -18,12 +22,22 @@
 
     <div class="field">
         <%= f.label :grade, "なんねんせい？" %>
-        <%= f.select :grade, (1..6).to_a, include_blank: "えらんでください！" %>
+        <div class="button-group" id="grade-buttons">
+            <% (1..2).each do |grade| %>
+                <button type="button" data-grade="<%= grade %>"><%= grade %>ねんせい</button>
+            <% end %>
+        </div>
+        <%= f.hidden_field :grade %>
     </div>
 
     <div class="field">
         <%= f.label :class_num, "なんくみ？" %>
-        <%= f.select :class_num, (1..6).to_a, include_blank: "えらんでください！" %>
+        <div class="button-group" id="class-buttons">
+            <% (1..6).each do |class_num| %>
+                <button type="button" data-class-num="<%= class_num %>"><%= class_num %>くみ</button>
+            <% end %>
+        </div>
+        <%= f.hidden_field :class_num %>
     </div>
 
     <div class="field" id="student-num" style="display: none;">
@@ -38,25 +52,54 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const roleSelect = document.getElementById('user_role');
-        const teacherNameField = document.getElementById('teacher-name');
-        const studentNumField = document.getElementById('student-num');
+        const roleButtons = document.querySelectorAll("#role-buttons button");
+        const gradeButtons = document.querySelectorAll("#grade-buttons button");
+        const classButtons = document.querySelectorAll("#class-buttons button");
+        const roleInput = document.querySelector("#user_role");
+        const gradeInput = document.querySelector("#user_grade");
+        const classNumInput = document.querySelector("#user_class_num");
+        const teacherNameField = document.getElementById("teacher-name");
+        const studentNumField = document.getElementById("student-num");
 
-    function toggleFields() {
-        const role = roleSelect.value;
-        if (role === '1') {
-            teacherNameField.style.display = 'block';
-            studentNumField.style.display = 'none';
-        } else if (role === '0') {
-            teacherNameField.style.display = 'none';
-            studentNumField.style.display = 'block';
-        } else {
-            teacherNameField.style.display = 'none';
-            studentNumField.style.display = 'none';
+        function toggleFields() {
+            const role = roleInput.value;
+            if (role === "1") {
+                teacherNameField.style.display = "block";
+                studentNumField.style.display = "none";
+            } else if (role === "0") {
+                teacherNameField.style.display = "none";
+                studentNumField.style.display = "block";
+            } else {
+                teacherNameField.style.display = "none";
+                studentNumField.style.display = "none";
+            }
         }
-    }
 
-        roleSelect.addEventListener('change', toggleFields);
+        roleButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                roleButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                roleInput.value = button.dataset.role;
+                toggleFields();
+            });
+        });
+
+        gradeButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                gradeButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                gradeInput.value = button.dataset.grade;
+            });
+        });
+
+        classButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                classButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                classNumInput.value = button.dataset.classNum;
+            });
+        });
+
         toggleFields(); // 初期表示のために呼び出す
     });
 </script>

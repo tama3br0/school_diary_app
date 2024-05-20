@@ -1,5 +1,5 @@
-<h1>がっこうにっき を はじめよう！</h1>
-<p>
-    「ログイン」のボタンをおして、アプリをつかおう！
-</p>
-<%= link_to "ログイン", user_google_oauth2_omniauth_authorize_path %>
+<div class="login-container">
+    <h1>がっこうにっき を はじめよう！</h1>
+    <p>「ログイン」のボタンをおして、アプリをつかおう！</p>
+    <%= link_to "ログイン", user_google_oauth2_omniauth_authorize_path, class: "login-button" %>
+</div>

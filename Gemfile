@@ -75,3 +75,5 @@ gem 'omniauth-google-oauth2'
 gem 'activestorage'
 
 gem 'simple_calendar'
+
+gem 'faker'

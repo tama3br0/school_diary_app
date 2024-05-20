@@ -1,0 +1,21 @@
+<div class="diary-selection-page">
+    <h1>にっきを えらぶ</h1>
+    <%= link_to 'さいしょに もどる', authenticated_root_path, class: 'button return-button' %>
+
+    <div class="week-navigation">
+        <%= link_to 'まえの しゅう', choose_diary_diaries_path(date: (params[:date]&.to_date || Date.today).beginning_of_week(:monday) - 7.days), class: 'button week-nav-button' %>
+        <span>こんしゅう</span>
+        <%= link_to 'つぎの しゅう', choose_diary_diaries_path(date: (params[:date]&.to_date || Date.today).beginning_of_week(:monday) + 7.days), class: 'button week-nav-button' %>
+    </div>
+
+    <% @diaries.each do |week_start, diaries| %>
+        <h2><%= week_start.strftime('%m月%d日 (%a)') %> - <%= (week_start + 4.days).strftime('%m月%d日 (%a)') %></h2>
+        <ul>
+            <% diaries.each_with_index do |diary, index| %>
+                <li class="diary-item diary-item-<%= index + 1 %>">
+                    <%= link_to "#{diary.date.strftime('%m月%d日 (%a)')} の にっき", diary_path(diary), class: 'diary-link' %>
+                </li>
+            <% end %>
+        </ul>
+    <% end %>
+</div>
